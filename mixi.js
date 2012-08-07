@@ -4,8 +4,8 @@ var GraphApi = function(params) {
 	this.scope = params.scope;
 	this.redirectUrl = params.redirectUrl || "http://mixi.jp/connect_authorize_success.html";
 	this.expiresAt = (new Date(0)).getTime();
-	this.accessToken = null;
-	this.refreshToken = _loadRefreshToken(this.scope);
+	this.accessToken = params.accessToken;
+	this.refreshToken = params.refreshToken || _loadRefreshToken(this.scope);
 	this.autoAuthorize = isDefined(params.autoAuthorize) ? params.autoAuthorize : true;
 	this.timeout = params.timeout || 30 * 1000;
 	
